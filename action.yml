@@ -1,11 +1,21 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'action-php_codesniffer'
+description: 'Runs PHP_CodeSniffer'
+author: 'Novusvetus / Marcel Rudolf, Germany <development@novusvetus.de>'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  files:
+    required: false
+    description: 'Files to check'
+    default: '**.php'
+  phpcs_path:
+    required: false
+    description: 'Path to phpcs executable'
+    default: 'phpcs'
+  standard:
+    required: false
+    description: 'Code style standard name or path to phpcs.xml file'
+  fail_on_warnings:
+    required: false
+    description: 'Whether action should fail on warnings or not, default to true (fails)'
 runs:
   using: 'node12'
   main: 'dist/index.js'

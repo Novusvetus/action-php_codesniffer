@@ -1,17 +1,21 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+import * as path from 'path'
+import {getChangedFiles} from './get-changed-file'
+import {runOnFiles} from './run-on-files'
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const files = await getChangedFiles()
+    core.info(JSON.stringify(files, null, 2))
+    if (!files.files.length) {
+      return
+    }
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    const matchersPath = path.join(__dirname, '..', '.github')
+    console.log(`##[add-matcher]${path.join(matchersPath, 'matcher.json')}`)
 
-    core.setOutput('time', new Date().toTimeString())
-  } catch (error) {
+    runOnFiles(files.files)
+  } catch (error: any) {
     core.setFailed(error.message)
   }
 }

@@ -19,6 +19,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./
         with:
-          milliseconds: 1000
+          fetch-depth: 0 # important!
