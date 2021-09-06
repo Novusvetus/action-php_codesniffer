@@ -27,7 +27,7 @@
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "4.0.0",
-    "@octokit/webhooks": "7.8.1",
+    "@octokit/webhooks": "9.14.1",
     "picomatch": "2.3.0"
   },
   "devDependencies": {
