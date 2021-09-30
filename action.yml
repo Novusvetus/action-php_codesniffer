@@ -1,4 +1,4 @@
-name: 'action-php_codesniffer'
+name: 'PHP_CodeSniffer'
 description: 'Runs PHP_CodeSniffer'
 author: 'Novusvetus / Marcel Rudolf, Germany <development@novusvetus.de>'
 inputs:
@@ -9,7 +9,7 @@ inputs:
   phpcs_path:
     required: false
     description: 'Path to phpcs executable'
-    default: 'phpcs'
+    default: 'php phpcs.phar'
   standard:
     required: false
     description: 'Code style standard name or path to phpcs.xml file'
