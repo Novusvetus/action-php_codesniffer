@@ -4,7 +4,6 @@ node_modules
 # Rest pulled from https://github.com/github/gitignore/blob/master/Node.gitignore
 # Logs
 logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -66,11 +65,7 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
 .env.test
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
 
 # next.js build output
 .next
@@ -91,9 +86,38 @@ typings/
 .dynamodb/
 
 # OS metadata
-.DS_Store
 Thumbs.db
 
 # Ignore built ts files
 __tests__/runner/*
 lib/**/*
+
+# Ignore temporary files (left by editors and OS)
+.DS_Store
+*._*
+*.AppleDouble
+*.bak
+*.swp
+*~
+composer.lock
+.env
+
+# Ignore by common IDEs used directories/files
+.buildpath
+.settings
+.TemporaryItems
+.webprj
+*.idea
+*.project
+nbproject
+
+# Temporary files and folders
+.cache
+.php_cs.cache
+.sass-cache
+.session
+*.log
+
+# Files by Build tool
+.vagrant
+Vagrantfile
