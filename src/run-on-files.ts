@@ -16,7 +16,7 @@ export function runOnFiles(files: string[]): number {
   try {
     execSync(`${phpcs} ${args.join(' ')} ${files.join(' ')}`, {
       stdio: 'inherit',
-      timeout: 20000
+      timeout: 30000
     })
     return 0
   } catch (err: any) {

@@ -60,9 +60,10 @@ function getChangedFiles() {
         });
         const globs = pattern.length ? pattern.split(',') : ['**.php'];
         const isMatch = (0, picomatch_1.default)(globs);
-        console.log('Filter patterns:', globs, isMatch('src/test.php'));
+        console.log('Filter patterns:', globs);
         const payload = github.context;
         try {
+            console.log(payload.sha);
             const git = (0, child_process_1.spawn)('git', [
                 '--no-pager',
                 'diff-tree',
@@ -70,7 +71,7 @@ function getChangedFiles() {
                 '--name-status',
                 '--diff-filter=d',
                 '-r',
-                `${payload.sha}..`
+                payload.sha
             ], {
                 windowsHide: true,
                 timeout: 5000
@@ -86,9 +87,12 @@ function getChangedFiles() {
                     const line = readline_2_1.value;
                     const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line);
                     if (parsed === null || parsed === void 0 ? void 0 : parsed.groups) {
-                        const file = parsed.groups[1];
+                        const file = parsed.groups['file'];
                         if (isMatch(file) && (0, fs_1.existsSync)(file)) {
                             result.files.push(file);
+                        }
+                        else {
+                            console.log('Skip:', file);
                         }
                     }
                 }
@@ -103,6 +107,7 @@ function getChangedFiles() {
             return result;
         }
         catch (err) {
+            console.log('Error');
             console.error(err);
             return {
                 files: []
@@ -216,7 +221,7 @@ function runOnFiles(files) {
     try {
         (0, child_process_1.execSync)(`${phpcs} ${args.join(' ')} ${files.join(' ')}`, {
             stdio: 'inherit',
-            timeout: 20000
+            timeout: 30000
         });
         return 0;
     }
