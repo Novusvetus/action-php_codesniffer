@@ -16,10 +16,11 @@ export async function getChangedFiles(): Promise<ChangedFiles> {
 
   const globs = pattern.length ? pattern.split(',') : ['**.php']
   const isMatch = picomatch(globs)
-  console.log('Filter patterns:', globs, isMatch('src/test.php'))
+  console.log('Filter patterns:', globs)
   const payload = github.context
 
   try {
+    console.log(payload.sha)
     const git = spawn(
       'git',
       [
@@ -29,13 +30,14 @@ export async function getChangedFiles(): Promise<ChangedFiles> {
         '--name-status',
         '--diff-filter=d',
         '-r',
-        `${payload.sha}..`
+        payload.sha
       ],
       {
         windowsHide: true,
         timeout: 5000
       }
     )
+
     const readline = createInterface({
       input: git.stdout
     })
@@ -45,15 +47,18 @@ export async function getChangedFiles(): Promise<ChangedFiles> {
     for await (const line of readline) {
       const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line)
       if (parsed?.groups) {
-        const file = parsed.groups[1]
+        const file = parsed.groups['file']
 
         if (isMatch(file) && existsSync(file)) {
           result.files.push(file)
+        } else {
+          console.log('Skip:', file)
         }
       }
     }
     return result
   } catch (err) {
+    console.log('Error')
     console.error(err)
     return {
       files: []
