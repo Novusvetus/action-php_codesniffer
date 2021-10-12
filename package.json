@@ -1,8 +1,8 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
+  "name": "php_codesniffer",
+  "version": "1.1.1",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "GitHub PHP_CodeSniffer action. This workflow check the PHP, CSS and Javascript files for the wanted coding standards.",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,15 +15,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/Novusvetus/action-php_codesniffer.git"
   },
   "keywords": [
     "actions",
     "node",
     "setup"
   ],
-  "author": "Noovusvetus",
-  "license": "MIT",
+  "author": "Novusvetus",
+  "license": "BSD-3",
   "dependencies": {
     "@actions/core": "^1.5.0",
     "@actions/github": "5.0.0",
