@@ -6,6 +6,10 @@ inputs:
     required: false
     description: 'Files to check'
     default: '**.php'
+  scan_all:
+    required: false
+    description: 'Scan all files and not only changed'
+    default: false
   phpcs_path:
     required: false
     description: 'Path to phpcs executable'
