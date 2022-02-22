@@ -31,7 +31,7 @@
     "picomatch": "2.3.1"
   },
   "devDependencies": {
-    "@types/node": "^17.0.13",
+    "@types/node": "^17.0.19",
     "@types/picomatch": "2.3.0",
     "@typescript-eslint/parser": "^5.10.1",
     "@vercel/ncc": "^0.33.1",
