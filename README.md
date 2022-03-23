@@ -29,7 +29,7 @@ jobs:
   phpcs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # important!
 
@@ -38,7 +38,7 @@ jobs:
           curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
           php phpcs.phar --version
 
-      - uses: Novusvetus/action-php_codesniffer@1.2.2
+      - uses: Novusvetus/action-php_codesniffer@1.2.3
         with:
           files: "**.php"
           scan_all: true
