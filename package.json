@@ -1,6 +1,6 @@
 {
   "name": "php_codesniffer",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "private": true,
   "description": "GitHub PHP_CodeSniffer action. This workflow check the PHP, CSS and Javascript files for the wanted coding standards.",
   "main": "lib/main.js",
