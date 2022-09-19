@@ -38,7 +38,7 @@ jobs:
           curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
           php phpcs.phar --version
 
-      - uses: Novusvetus/action-php_codesniffer@1.2.7
+      - uses: Novusvetus/action-php_codesniffer@1.2.8
         with:
           files: "**.php"
           scan_all: true
