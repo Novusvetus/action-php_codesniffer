@@ -57,7 +57,7 @@ const fs_1 = __nccwpck_require__(7147);
 const picomatch_1 = __importDefault(__nccwpck_require__(8569));
 const child_process_1 = __nccwpck_require__(2081);
 function getAllFiles() {
-    var e_1, _a;
+    var _a, e_1, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         const pattern = core.getInput('files', {
             required: false
@@ -86,20 +86,27 @@ function getAllFiles() {
                 files: []
             };
             try {
-                for (var readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), !readline_2_1.done;) {
-                    const line = readline_2_1.value;
-                    if (isMatch(line) && (0, fs_1.existsSync)(line)) {
-                        result.files.push(line);
+                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a;) {
+                    _c = readline_2_1.value;
+                    _d = false;
+                    try {
+                        const line = _c;
+                        if (isMatch(line) && (0, fs_1.existsSync)(line)) {
+                            result.files.push(line);
+                        }
+                        else {
+                            console.log('Skip:', line);
+                        }
                     }
-                    else {
-                        console.log('Skip:', line);
+                    finally {
+                        _d = true;
                     }
                 }
             }
             catch (e_1_1) { e_1 = { error: e_1_1 }; }
             finally {
                 try {
-                    if (readline_2_1 && !readline_2_1.done && (_a = readline_2.return)) yield _a.call(readline_2);
+                    if (!_d && !_a && (_b = readline_2.return)) yield _b.call(readline_2);
                 }
                 finally { if (e_1) throw e_1.error; }
             }
@@ -175,7 +182,7 @@ const fs_1 = __nccwpck_require__(7147);
 const picomatch_1 = __importDefault(__nccwpck_require__(8569));
 const child_process_1 = __nccwpck_require__(2081);
 function getChangedFiles() {
-    var e_1, _a;
+    var _a, e_1, _b, _c;
     return __awaiter(this, void 0, void 0, function* () {
         const pattern = core.getInput('files', {
             required: false
@@ -205,24 +212,31 @@ function getChangedFiles() {
                 files: []
             };
             try {
-                for (var readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), !readline_2_1.done;) {
-                    const line = readline_2_1.value;
-                    const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line);
-                    if (parsed === null || parsed === void 0 ? void 0 : parsed.groups) {
-                        const file = parsed.groups['file'];
-                        if (isMatch(file) && (0, fs_1.existsSync)(file)) {
-                            result.files.push(file);
+                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a;) {
+                    _c = readline_2_1.value;
+                    _d = false;
+                    try {
+                        const line = _c;
+                        const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line);
+                        if (parsed === null || parsed === void 0 ? void 0 : parsed.groups) {
+                            const file = parsed.groups['file'];
+                            if (isMatch(file) && (0, fs_1.existsSync)(file)) {
+                                result.files.push(file);
+                            }
+                            else {
+                                console.log('Skip:', file);
+                            }
                         }
-                        else {
-                            console.log('Skip:', file);
-                        }
+                    }
+                    finally {
+                        _d = true;
                     }
                 }
             }
             catch (e_1_1) { e_1 = { error: e_1_1 }; }
             finally {
                 try {
-                    if (readline_2_1 && !readline_2_1.done && (_a = readline_2.return)) yield _a.call(readline_2);
+                    if (!_d && !_a && (_b = readline_2.return)) yield _b.call(readline_2);
                 }
                 finally { if (e_1) throw e_1.error; }
             }

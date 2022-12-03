@@ -1,19 +1,19 @@
 name: Lock
-
-on:
+'on':
   schedule:
-    - cron: "0 9 * * *"
-  workflow_dispatch:
-
+    -
+      cron: '0 9 * * *'
+  workflow_dispatch: null
 jobs:
   lock:
-    name: 🔒 Lock closed issues and PRs
+    name: '🔒 Lock closed issues and PRs'
     runs-on: ubuntu-latest
     steps:
-      - uses: dessant/lock-threads@v3
+      -
+        uses: dessant/lock-threads@v3
         with:
-          github-token: ${{ github.token }}
-          issue-inactive-days: "7"
-          issue-lock-reason: ""
-          pr-inactive-days: "7"
-          pr-lock-reason: ""
+          github-token: '${{ github.token }}'
+          issue-inactive-days: '7'
+          issue-lock-reason: ''
+          pr-inactive-days: '7'
+          pr-lock-reason: ''

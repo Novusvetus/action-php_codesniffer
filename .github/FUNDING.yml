@@ -1,5 +1,5 @@
-# These are supported funding model platforms
-
-github: [novusvetus]
+github:
+  - novusvetus
 ko_fi: novusvetus
-custom: ["https://www.paypal.me/marcelru"]
+custom:
+  - 'https://www.paypal.me/marcelru'
