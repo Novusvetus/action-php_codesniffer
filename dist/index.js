@@ -86,20 +86,15 @@ function getAllFiles() {
                 files: []
             };
             try {
-                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a;) {
+                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a; _d = true) {
                     _c = readline_2_1.value;
                     _d = false;
-                    try {
-                        const line = _c;
-                        if (isMatch(line) && (0, fs_1.existsSync)(line)) {
-                            result.files.push(line);
-                        }
-                        else {
-                            console.log('Skip:', line);
-                        }
+                    const line = _c;
+                    if (isMatch(line) && (0, fs_1.existsSync)(line)) {
+                        result.files.push(line);
                     }
-                    finally {
-                        _d = true;
+                    else {
+                        console.log('Skip:', line);
                     }
                 }
             }
@@ -212,24 +207,19 @@ function getChangedFiles() {
                 files: []
             };
             try {
-                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a;) {
+                for (var _d = true, readline_2 = __asyncValues(readline), readline_2_1; readline_2_1 = yield readline_2.next(), _a = readline_2_1.done, !_a; _d = true) {
                     _c = readline_2_1.value;
                     _d = false;
-                    try {
-                        const line = _c;
-                        const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line);
-                        if (parsed === null || parsed === void 0 ? void 0 : parsed.groups) {
-                            const file = parsed.groups['file'];
-                            if (isMatch(file) && (0, fs_1.existsSync)(file)) {
-                                result.files.push(file);
-                            }
-                            else {
-                                console.log('Skip:', file);
-                            }
+                    const line = _c;
+                    const parsed = /^(?<status>[ACMR])[\s\t]+(?<file>\S+)$/.exec(line);
+                    if (parsed === null || parsed === void 0 ? void 0 : parsed.groups) {
+                        const file = parsed.groups['file'];
+                        if (isMatch(file) && (0, fs_1.existsSync)(file)) {
+                            result.files.push(file);
                         }
-                    }
-                    finally {
-                        _d = true;
+                        else {
+                            console.log('Skip:', file);
+                        }
                     }
                 }
             }
