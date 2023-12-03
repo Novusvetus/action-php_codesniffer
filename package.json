@@ -31,11 +31,11 @@
     "picomatch": "3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.10.0",
+    "@types/node": "^20.10.2",
     "@types/picomatch": "2.3.3",
-    "@typescript-eslint/parser": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.1",
     "@vercel/ncc": "^0.38.1",
-    "eslint": "^8.54.0",
+    "eslint": "^8.55.0",
     "eslint-plugin-github": "^4.10.1",
     "eslint-plugin-jest": "^27.6.0",
     "eslint-plugin-prettier": "^5.0.1",
